@@ -7,6 +7,60 @@ font-size:40px;
 float: left;
 }
 
+.posts{
+width: 480px;
+margin: 0px auto;
+}
+
+form textarea:focus {
+    border: 1px solid #0084D7;
+    outline: 0px none;
+    transition: border 0.5s ease 0s;
+}
+
+body{
+background-color: #F6F6F6;
+}
+
+form textarea {
+    border: 1px solid transparent;
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 20px 0px 10px;
+    min-height: 100px;
+    padding: 16px;
+    transition: border 0.5s ease 0s;
+    width: calc(100% - 32px);
+}
+
+
+.actions input {
+    background-color: #DA0A0A;
+    border: medium none;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 12px 24px;
+    transition: background-color 0.5s ease 0s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.post {
+    background-color: #FFF;
+    font-weight: 300;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+p.time {
+    color: #0084D7;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

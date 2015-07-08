@@ -20,5 +20,6 @@ class PostsController < ApplicationController
     	params.require(:post).permit(:content) 
     end
 
-before_action :require_user, only: [:index, :show]
+  def new
+  end
 end

@@ -13,7 +13,7 @@
 
 
 
-<% @post.reverse_each do |post| %> 
+<% @post.each do |post| %> 
 <div class="post"> 
   <p class="content"><%= post.content %></p> 
   <p class="time"><%= post.created_at %></p> 
