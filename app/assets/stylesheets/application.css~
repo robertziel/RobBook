@@ -1,8 +1,8 @@
  html, body {
   background-color: #F6F6F6;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0px !important;
+  padding: 0px;
 }
 
 h1{
@@ -41,7 +41,11 @@ form textarea:focus {
 }
 
 .pull-right {
-    text-align: right !important;
+    float: right !important;
+    background-color: #FFF;
+    border-bottom-left-radius: 80px;
+    margin: 0px !important;
+    padding: 8px 20px 0px 0px !important;
 }
 
 
@@ -153,7 +157,9 @@ input[type=password] {
   text-decoration: none;   
 }
 
-
+* {
+    box-sizing: border-box;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

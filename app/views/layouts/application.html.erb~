@@ -14,14 +14,16 @@
     <div class="header">
       <div class="container">
         <%= link_to root_path do %>
-          <div id="logo"></div> <h1 id="title" >RobBook</h1><p>Hello <%= current_user.first_name %>!</p>
+          <div id="logo"></div> <h1 id="title" >RobBook</h1>
+		<% if current_user %> 
+			<p>Hello <%= current_user.first_name %>!</p>
+		<% end %>
         <% end %>
 
         <div class="nav pull-right">
           
           <% if current_user %> 
   <ul> 
-    <li>Hello <%= current_user.first_name %>!</li> 
     <li><%= link_to "Home", '/' %></li>   
     <li><%= link_to "Settings", 'settings' %></li> 
     <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
