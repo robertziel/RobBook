@@ -72,6 +72,12 @@ p.time {
     margin-top: 12px;
 }
 
+p.author {
+    color: #0084D7;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
 .form {
   text-align:center;
   margin: 0 auto 10px;

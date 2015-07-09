@@ -4,7 +4,6 @@
   font-weight: bold;
   margin: 0;
   padding: 0;
-  text-transform: lowercase;
 }
 
 .container {
@@ -68,6 +67,12 @@ form textarea {
 }
 
 p.time {
+    color: #0084D7;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+p.author {
     color: #0084D7;
     font-size: 12px;
     margin-top: 12px;
