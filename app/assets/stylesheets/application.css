@@ -1,7 +1,6 @@
  html, body {
   background-color: #F6F6F6;
   font-family: Arial, sans-serif;
-  font-weight: bold;
   margin: 0;
   padding: 0;
 }
@@ -19,6 +18,7 @@ text-align: center;
 color: #DA0A0A;
 font-size:40px;
 text-align: left;
+font-weight: 300;
 }
 
 #logo{
@@ -42,7 +42,10 @@ form textarea:focus {
 
 .pull-right {
     float: right !important;
-    margin: 20px 20px 0px 0px;
+    background-color: #FFF;
+    border-bottom-left-radius: 80px;
+    margin: 0px !important;
+    padding: 8px 20px 0px 0px !important;
 }
 
 
