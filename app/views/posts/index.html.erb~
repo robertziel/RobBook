@@ -15,7 +15,7 @@
 
 <% @post.reverse_each do |post| %> 
 <div class="post"> 
-  <p class="author"><%= post.user.first_name unless post.user.blank? %><%= post.user.last_name unless post.user.blank? %> napisał:</p> 
+  <p class="author"><%= post.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %> napisał:</p> 
   <p class="content"><%= post.content %></p> 
   <p class="time"><%= post.created_at %></p> 
 </div> 

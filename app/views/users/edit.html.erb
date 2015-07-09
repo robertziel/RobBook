@@ -1,0 +1,27 @@
+<% provide(:title, "Settings") %>
+
+<h1>Update your profile</h1>
+
+<div class="form">
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :surname %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password, "New password" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Password confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", class: "btn-submit" %>
+    <% end %>
+</div>
+
+
