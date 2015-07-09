@@ -43,7 +43,7 @@ form textarea:focus {
 }
 
 .pull-right {
-    float: right !important;
+    text-align: right !important;
     background-color: #FFF;
     border-bottom-left-radius: 80px;
     margin: 0px !important;
@@ -128,10 +128,7 @@ input[type=password] {
 
 
 
-.pull-right {
-  position: inline;
-  margin: 20px 20px 0 0;
-}
+
 
 .header {
   margin: 0;
