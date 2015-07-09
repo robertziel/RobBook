@@ -1,0 +1,15 @@
+<div class="form">
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :first_name, params[:first_name], placeholder: "First name" %>
+  <%= text_field_tag :last_name, params[:last_name], placeholder: "Last name" %>
+  <%= submit_tag "Search", :name => nil, class: "btn-submit" %>
+<% end %>
+
+<% @users.each do |user| %> 
+<div class="user"> 
+  <p class="username"><%= user.first_name unless user.blank? %> <%= user.last_name unless user.blank? %></p> 
+</div> 
+<% end %>
+
+<div>

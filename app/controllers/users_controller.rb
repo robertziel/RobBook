@@ -14,6 +14,16 @@ class UsersController < ApplicationController
   end
 
 
+def index
+  if params[:first_name]
+    @users = User.search(params[:first_name], 1).search(params[:last_name], 2).order("created_at DESC")
+  else
+    @users = User.all.order('created_at DESC')
+  end
+end
+
+
+
   def edit
     @user = User.find(session[:user_id])
   end
@@ -26,6 +36,8 @@ class UsersController < ApplicationController
       render 'settings'
     end
   end
+
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)

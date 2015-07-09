@@ -6,22 +6,27 @@
     <%= form_for(@user) do |f| %>
 
       <%= f.label :name %>
-      <%= f.text_field :first_name, class: 'form-control' %>
+      <%= f.text_field :first_name %>
 
       <%= f.label :surname %>
-      <%= f.text_field :last_name, class: 'form-control' %>
+      <%= f.text_field :last_name %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email %>
 
       <%= f.label :password, "New password" %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password %>
 
       <%= f.label :password_confirmation, "Password confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Save changes", class: "btn-submit" %>
     <% end %>
+
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+    </div>
 </div>
 
 
