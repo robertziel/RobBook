@@ -14,7 +14,7 @@
     <div class="header">
       <div class="container">
         <%= link_to root_path do %>
-          <img src="http://s3.amazonaws.com/codecademy-content/courses/rails-auth/img/fotofoto-logo.svg" id="logo" width="80" height="80"> <h1 id="title" >RobBook</h1>
+          <div id="logo" width="80" height="80"></div> <h1 id="title" >RobBook</h1>
         <% end %>
 
         <div class="nav pull-right">
@@ -22,6 +22,8 @@
           <% if current_user %> 
   <ul> 
     <li>Hello <%= current_user.first_name %>!</li> 
+    <li><%= link_to "Home", '/' %></li>   
+    <li><%= link_to "Settings", 'settings' %></li> 
     <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
   </ul> 
 <% else %> 
