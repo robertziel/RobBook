@@ -1,13 +1,15 @@
+<% provide(:title, "RobBook") %>
+
 <div class="posts">
 
 
 <%= form_for(@post_new) do |f| %>  
    <div class="field"> 
-      <%= f.label :post %><br> 
+      <%= f.label :post , " "%><br> 
       <%= f.text_area :content %> 
     </div> 
     <div class="actions"> 
-      <%= f.submit "Post" %> 
+      <%= f.submit "Post" , class: "btn-submit"%>
     </div> 
 <% end %>
 

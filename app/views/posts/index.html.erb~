@@ -1,13 +1,15 @@
+<% provide(:title, "RobBook") %>
+
 <div class="posts">
 
 
 <%= form_for(@post_new) do |f| %>  
    <div class="field"> 
-      <%= f.label :post %><br> 
+      <%= f.label :post , " "%><br> 
       <%= f.text_area :content %> 
     </div> 
     <div class="actions"> 
-      <%= f.submit "Post" %> 
+      <%= f.submit "Post" , class: "btn-submit"%>
     </div> 
 <% end %>
 
@@ -15,7 +17,7 @@
 
 <% @post.reverse_each do |post| %> 
 <div class="post"> 
-  <p class="author"><%= post.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %> napisał:</p> 
+  <p class="author"><%= post.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %></p> 
   <p class="content"><%= post.content %></p> 
   <p class="time"><%= post.created_at %></p> 
 </div> 
