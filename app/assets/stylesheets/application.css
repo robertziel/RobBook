@@ -44,11 +44,15 @@ form textarea:focus {
 }
 
 .pull-right {
-    text-align: right !important;
-    background-color: #FFF;
-    border-bottom-left-radius: 80px;
-    margin: 0px !important;
-    padding: 1px 20px 1px 0px !important;
+background-color: #FFF;
+border-bottom-left-radius: 80px;
+margin-top: 0px !important;
+margin-right: 0px !important;
+margin-left: 0px !important;
+padding: 1px 20px 1px 0px !important;
+position: relative;
+right: 0px;
+margin-bottom: 10px;
 }
 
 
