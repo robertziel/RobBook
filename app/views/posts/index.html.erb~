@@ -30,9 +30,11 @@
 	<% end %>
 
 	<% post.comments.reverse_each do |comment| %> 
-		  <p class="author"><%= comment.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %></p> 
+		<div class="comments">
+		  <p class="author"><%= comment.user.first_name unless comment.user.blank? %> <%= comment.user.last_name unless comment.user.blank? %> commented:</p> 
 		  <p class="content"><%= comment.content %></p> 
 		  <p class="time"><%= comment.created_at %></p> 
+		</div>
 	<% end %>
 
 </div> 
