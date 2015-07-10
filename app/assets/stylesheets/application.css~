@@ -113,6 +113,7 @@ margin: 0px 5px 0px 0px;
 }
 .post .comments .content {
 font-size:14px;
+margin: 2px;
 }
 
 .post p.author a,.post p.username a {
@@ -188,9 +189,7 @@ border-top: 2px solid #E1E0E0;
 padding-top: 10px;
 }
 
-.content{
-margin: 0px;
-}
+
 #comment_content{
 border: 1px solid #E6E6E6;
 }
