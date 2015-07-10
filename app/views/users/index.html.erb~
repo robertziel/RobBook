@@ -10,7 +10,7 @@
 
 <% @users.each do |user| %> 
 <div class="post"> 
-  <p class="username"><%= link_to (user.first_name + user.last_name), user_path(user) %></p> 
+  <p class="username"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></p> 
 </div> 
 <% end %>
 
