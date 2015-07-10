@@ -3,6 +3,8 @@
   font-family: Arial, sans-serif;
   margin: 0px !important;
   padding: 0px;
+  position: relative;
+  top: -15px;
 }
 
 h1{
@@ -22,6 +24,8 @@ color: #DA0A0A;
 font-size:40px;
 text-align: left;
 font-weight: 300;
+position: relative;
+top: 15px;
 }
 
 #logo{
