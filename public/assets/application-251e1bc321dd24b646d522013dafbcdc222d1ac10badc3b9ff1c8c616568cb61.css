@@ -1,0 +1,214 @@
+ html, body {
+  background-color: #F6F6F6;
+  font-family: Arial, sans-serif;
+  margin: 0px !important;
+  padding: 0px;
+  position: relative;
+  top: -15px;
+}
+
+h1{
+text-align: center;
+font-family: inherit;
+font-weight: 500;
+font-size: 36px;
+}
+
+.container {
+  padding: 0;
+  width: 100%;
+}
+
+#title {
+color: #DA0A0A;
+font-size:40px;
+text-align: left;
+font-weight: 300;
+position: relative;
+top: 15px;
+}
+
+#logo{
+float: left;
+width:80px;
+height:80px;
+background-color: #DA0A0A;
+border-bottom-right-radius:80px;
+}
+
+.posts{
+width: 480px;
+margin: 0px auto;
+}
+
+form textarea:focus {
+    border: 1px solid #0084D7;
+    outline: 0px none;
+    transition: border 0.5s ease 0s;
+}
+
+.pull-right {
+background-color: #FFF;
+border-bottom-left-radius: 80px;
+margin-top: 0px !important;
+margin-right: 0px !important;
+margin-left: 0px !important;
+padding: 1px 20px 1px 0px !important;
+position: relative;
+right: 0px;
+margin-bottom: 10px;
+}
+
+
+form textarea {
+    border: 1px solid transparent;
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 20px 0px 10px;
+    min-height: 100px;
+    padding: 16px;
+    transition: border 0.5s ease 0s;
+    width: 100%
+}
+
+
+.actions input {
+    background-color: #DA0A0A;
+    border: medium none;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 12px 24px;
+    transition: background-color 0.5s ease 0s;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.post {
+    background-color: #FFF;
+    font-weight: 300;
+    padding: 16px;
+    margin-top: 10px;
+    box-shadow: 0 0 15px rgba(132, 132, 132, 0.5);
+    border-radius: 10px;
+}
+
+p.time {
+    color: rgba(0, 157, 255, 0.55);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.post .comments .author a,.post .comments .username a {
+    color: #0084D7;
+    font-size: 14px;
+    margin-top: 12px;
+}
+.post .comments .author {
+float: left;
+margin: 0px 5px 0px 0px;
+}
+
+.post p.author a,.post p.username a {
+    color: #0084D7;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+.form {
+  text-align:center;
+  margin: 0 auto 10px;
+  padding: 20px 0 10px 0;
+  font-size: 16px;
+  width: 300px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  color: #666666;
+  width: 100%;
+  border: 1px solid #E6E6E6;
+  border-radius: 0px; 
+  height: 60px;
+  margin: 6px auto;
+  text-indent: 10px;
+}
+
+.btn-submit {
+  color: #FFFFFF;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: #c91717;
+  padding: 10px 20px;
+  border: 0;
+  margin-top: 6px;
+}
+
+
+
+
+
+.header {
+  margin: 0;
+  padding: 0;
+}
+
+.header li {
+ display: inline;
+ margin-left: 30px;
+}
+
+.header img {
+  margin: 0 20px 0 0;
+  height: 80px;
+  width: 80px;
+}
+.header a {
+  color: #000;
+  font-size: 20px;  
+  text-decoration: none; 
+}
+
+.header a:hover {
+  color: #c91717;
+  text-decoration: none;   
+}
+
+.comments{
+border-top: 2px solid #E1E0E0;
+padding-top: 10px;
+}
+
+#comment_content{
+border: 1px solid #E6E6E6;
+}
+
+#new_comment{
+border-top: 5px solid #D5D5D5;
+padding-top: 15px;
+margin-top: 50px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
