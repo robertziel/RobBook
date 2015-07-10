@@ -84,6 +84,7 @@ form textarea {
     transition: background-color 0.5s ease 0s;
     text-decoration: none;
     display: inline-block;
+    font-weight: bold;
 }
 
 .post {
@@ -96,14 +97,24 @@ form textarea {
 }
 
 p.time {
-    color: #0084D7;
+    color: rgba(0, 157, 255, 0.55);
     font-size: 12px;
     margin-top: 12px;
 }
 
-p.author {
+.post .comments .author a,.post .comments .username a {
     color: #0084D7;
     font-size: 14px;
+    margin-top: 12px;
+}
+.post .comments .author {
+float: left;
+margin: 0px 5px 0px 0px;
+}
+
+.post p.author a,.post p.username a {
+    color: #0084D7;
+    font-size: 20px;
     margin-top: 12px;
 }
 
@@ -169,6 +180,7 @@ input[type=password] {
 
 .comments{
 border-top: 2px solid #E1E0E0;
+padding-top: 10px;
 }
 
 #comment_content{

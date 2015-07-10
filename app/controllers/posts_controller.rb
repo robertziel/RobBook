@@ -8,7 +8,9 @@ class PostsController < ApplicationController
 
   def create 
     @post_new = current_user.posts.build(post_params)
-    if @post_new.save 
+    if @post_new.content == ""
+      redirect_to '/' 
+    elsif @post_new.save 
       redirect_to '/' 
     else 
       render '/' 

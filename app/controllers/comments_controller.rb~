@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
 
   def create
-    @post = Post.find(params[:post_id])
-puts @post
-    @comment_new = @post.current_user.comments.build(comment_params)
-    if @comment_new.save 
+    @comment_new = current_user.comments.build(comment_params)
+    @comment_new.post_id = params[:post_id]
+    if @comment_new.content == ""
+      render '/' 
+    elsif @comment_new.save 
       redirect_to '/' 
     else 
       render '/' 

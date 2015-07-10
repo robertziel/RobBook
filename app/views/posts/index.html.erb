@@ -19,23 +19,25 @@
 <div class="post"> 
 	  <p class="author"><% unless post.user.blank? %><%= link_to (post.user.first_name + " " + post.user.last_name), post.user %><% end %></p> 
 	  <p class="content"><%= post.content %></p> 
-	  <p class="time"><%= post.created_at %></p> 
+	  <p class="time"><%= distance_of_time_in_words(post.created_at, Time.now) + " ago" %></p> 
 
 
+
+
+	<% post.comments.each do |comment| %> 
+		<div class="comments">
+		  <p class="author"><% unless comment.user.blank? %><%= link_to (comment.user.first_name + " " + comment.user.last_name + ":"), comment.user %><% end %></p> 
+		  <p class="content"><%= comment.content %></p> 
+		  <p class="time"><%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %></p> 
+		</div>
+	<% end %>
 
 	<%= form_for [post, @comment_new] do |c| %>
 		<p><%= c.label :comment, "New comment" %><br/>
 		        <%= c.text_area :content %></p>
-		<p><%= c.submit "Add comment" %></p>
+		<div class="actions"><%= c.submit "Add comment" %></div>
 	<% end %>
 
-	<% post.comments.reverse_each do |comment| %> 
-		<div class="comments">
-		  <p class="author"><% unless comment.user.blank? %><%= link_to (comment.user.first_name + " " + comment.user.last_name + " commented:"), comment.user %><% end %></p> 
-		  <p class="content"><%= comment.content %></p> 
-		  <p class="time"><%= comment.created_at %></p> 
-		</div>
-	<% end %>
 
 </div> 
 <% end %>

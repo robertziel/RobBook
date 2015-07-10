@@ -1,17 +1,18 @@
 <div class="form">
 
-<h1>Search people</h1>
+<h1>Search for people</h1>
 
-<%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :first_name, params[:first_name], placeholder: "First name" %>
-  <%= text_field_tag :last_name, params[:last_name], placeholder: "Last name" %>
-  <%= submit_tag "Search", :name => nil, class: "btn-submit" %>
-<% end %>
 
 <% @users.each do |user| %> 
 <div class="post"> 
   <p class="username"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></p> 
 </div> 
+<% end %>
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :first_name, params[:first_name], placeholder: "First name" %>
+  <%= text_field_tag :last_name, params[:last_name], placeholder: "Last name" %>
+  <%= submit_tag "Search", :name => nil, class: "btn-submit" %>
 <% end %>
 
 <div>
