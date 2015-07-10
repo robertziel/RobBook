@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'settings' => 'users#edit'
   get 'search' => 'users#index'
+  post 'posts' => 'comments#create'
   resources :users
+
+resources :posts do
+  resources :comments
+end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

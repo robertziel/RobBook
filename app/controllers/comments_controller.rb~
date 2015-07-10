@@ -1,0 +1,19 @@
+class CommentsController < ApplicationController
+
+  def create
+    @post = Post.find(params[:post_id])
+puts @post
+    @comment_new = @post.current_user.comments.build(comment_params)
+    if @comment_new.save 
+      redirect_to '/' 
+    else 
+      render '/' 
+    end 
+  end
+
+  private 
+    def comment_params 
+    	params.require(:comment).permit(:content) 
+    end
+
+end

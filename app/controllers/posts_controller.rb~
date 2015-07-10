@@ -2,11 +2,13 @@ class PostsController < ApplicationController
   def index
 	@post = Post.all
 	@post_new = Post.new 
+	@comment = Comment.all
+	@comment_new = Comment.new 
   end
 
   def create 
-    @post_new = Post.new(post_params)
-    if @post_new.save 
+    @comment_new = current_user.posts.build(post_params)
+    if @comment_new.save 
       redirect_to '/' 
     else 
       render '/' 

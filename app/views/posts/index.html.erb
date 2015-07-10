@@ -17,9 +17,26 @@
 
 <% @post.reverse_each do |post| %> 
 <div class="post"> 
-  <p class="author"><%= post.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %></p> 
-  <p class="content"><%= post.content %></p> 
-  <p class="time"><%= post.created_at %></p> 
+	  <p class="author"><%= post.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %></p> 
+	  <p class="content"><%= post.content %></p> 
+	  <p class="time"><%= post.created_at %></p> 
+
+
+
+	<%= form_for [post, @comment_new] do |c| %>
+		<p><%= c.label :comment, "New comment" %><br/>
+		        <%= c.text_area :content %></p>
+		<p><%= c.submit "Add comment" %></p>
+	<% end %>
+
+	<% post.comments.reverse_each do |comment| %> 
+		<div class="comments">
+		  <p class="author"><%= comment.user.first_name unless post.user.blank? %> <%= post.user.last_name unless post.user.blank? %> commented:</p> 
+		  <p class="content"><%= comment.content %></p> 
+		  <p class="time"><%= comment.created_at %></p> 
+		</div>
+	<% end %>
+
 </div> 
 <% end %>
 

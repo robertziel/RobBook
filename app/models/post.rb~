@@ -1,3 +1,4 @@
 class Post < ActiveRecord::Base
-  has_one :user, autosave: true
+  belongs_to :user
+  has_many :comments
 end
