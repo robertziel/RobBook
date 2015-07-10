@@ -9,8 +9,8 @@
 <% end %>
 
 <% @users.each do |user| %> 
-<div class="user"> 
-  <p class="username"><%= user.first_name unless user.blank? %> <%= user.last_name unless user.blank? %></p> 
+<div class="post"> 
+  <p class="username"><%= link_to (user.first_name + user.last_name), user_path(user) %></p> 
 </div> 
 <% end %>
 

@@ -1,0 +1,6 @@
+
+<h1><%= @user.first_name unless @user.blank? %> <%= @user.last_name unless @user.blank? %></h1>
+
+
+
+<p><% @user.posts %></p>

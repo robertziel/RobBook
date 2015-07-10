@@ -1,21 +1,13 @@
-<% provide(:title, "RobBook") %>
+
+<h1><%= @user.first_name unless @user.blank? %> <%= @user.last_name unless @user.blank? %></h1>
+
+
+
+
+
 
 <div class="posts">
-
-
-<%= form_for(@post_new) do |f| %>  
-   <div class="field"> 
-      <%= f.label :post , " "%><br> 
-      <%= f.text_area :content %> 
-    </div> 
-    <div class="actions"> 
-      <%= f.submit "Post" , class: "btn-submit"%>
-    </div> 
-<% end %>
-
-
-
-<% @post.reverse_each do |post| %> 
+<% @user.posts.reverse_each do |post| %> 
 <div class="post"> 
 	  <p class="author"><% unless post.user.blank? %><%= link_to (post.user.first_name + " " + post.user.last_name), post.user %><% end %></p> 
 	  <p class="content"><%= post.content %></p> 
@@ -31,7 +23,7 @@
 
 	<% post.comments.reverse_each do |comment| %> 
 		<div class="comments">
-		  <p class="author"><%= comment.user.first_name unless comment.user.blank? %> <%= comment.user.last_name unless comment.user.blank? %> commented:</p> 
+		  <p class="author"><% unless post.user.blank? %><%= link_to (comment.user.first_name + " " + comment.user.last_name + " commented:"), post.user %><% end %></p> 
 		  <p class="content"><%= comment.content %></p> 
 		  <p class="time"><%= comment.created_at %></p> 
 		</div>

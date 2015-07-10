@@ -3,6 +3,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+	@users = User.all
+	@user = @users.find(params[:id])
+	@comment = Comment.all
+	@comment_new = Comment.new 
+  end
+
   def create 
     @user = User.new(user_params) 
     if @user.save 
