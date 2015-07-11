@@ -22,7 +22,7 @@
 			<% @friendships.each do |friendship| %>
 				<% if friendship.friend == user.friends.find(session["user_id"]) %>
 					<% if friendship.confirmed == 0 %>
-						<%= link_to "Accept friendship", friendship, :method => :accept %>
+						<%= link_to "Accept friendship", friendship, :method => "put" %>
 					<% elsif friendship.confirmed == 1 %>
 						<p><%= "Friends" %></p>
 					<% end %>

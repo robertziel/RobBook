@@ -16,6 +16,9 @@
 					<% end %>
 				<% end %>
 			<% end %>
+			<% if @friendships.blank? %>
+				<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+			<% end %>
 		<% rescue %>
 			<% @friendships.each do |friendship| %>
 				<% if friendship.friend == current_user.friends.find(@user.id) %>

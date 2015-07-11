@@ -3,7 +3,7 @@
 
 
 
-
+<div class="panel">
 <% if session["user_id"] != @user.id %>
 	<% begin %>
 		<% begin %>
@@ -30,7 +30,10 @@
 	<% rescue %>
 		<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
 	<% end %>
+<% else %>
+	<p>Your profile</p>
 <% end %>
+</div>
 
 
 
