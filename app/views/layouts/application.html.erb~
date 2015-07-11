@@ -50,10 +50,11 @@
 
 <!-- show friends -->
 <div class="friends">
-
-<% list_of_friends.each do |f| %>
+<p>Friends</p>
+<% list_of_friends.reversed_each do |f| %>
 	<div>
 <p class="username"><%= link_to (f.friend.first_name + " " + f.friend.last_name), user_path(f.friend) %></p>
+<p class="time"><%= distance_of_time_in_words(f.friend.last_seen_at, Time.now) + " ago" if f.friend.last_seen_at %></p>
 </div>
 <% end %>
 </div>

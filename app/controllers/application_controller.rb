@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user 
   helper_method :list_of_friends 
+  before_filter :set_last_seen_at
 
 
 
@@ -17,6 +18,10 @@ def current_user
 	end
 end
 
+
+def set_last_seen_at
+  current_user.last_seen_at = Time.now if current_user
+end
 
 def list_of_friends
 	@list_of_friendships = current_user.friendships.all + current_user.inverse_friendships.all if current_user
