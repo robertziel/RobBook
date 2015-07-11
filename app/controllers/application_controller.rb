@@ -4,18 +4,33 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user 
+  helper_method :list_of_friends 
+
+
 
 def current_user 
 	begin
-		@current_user ||= User.find(session[:user_id]) if session[:user_id] 
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
 	rescue
 		session[:user_id] = nil 
 		redirect_to '/' 
 	end
 end
 
-def require_user 
-  redirect_to '/login' unless current_user 
+
+def list_of_friends
+	@list_of_friendships = current_user.friendships.all + current_user.inverse_friendships.all if current_user
+	@list_of_friendships.delete_if{|x| x.confirmed == 0} if current_user
+	@list_of_friendships.each{|x| x.friend = x.user if x.friend == current_user} if current_user
+	return @list_of_friendships if current_user
+	return []
 end
+
+def require_user 
+redirect_to '/login' unless current_user
+end
+
+
+
 
 end

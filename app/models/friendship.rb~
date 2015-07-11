@@ -1,2 +1,11 @@
 class Friendship < ActiveRecord::Base
+	belongs_to :user
+	belongs_to :friend, :class_name => "User"
+
+	def self.check_friendship
+	  if
+	  	where("confirmed like ?", "1")
+	  end
+	end
+
 end

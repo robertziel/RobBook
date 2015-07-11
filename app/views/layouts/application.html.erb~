@@ -46,5 +46,17 @@
 
     <%= yield %>
 
+
+
+<!-- show friends -->
+<div class="friends">
+
+<% list_of_friends.each do |f| %>
+	<div>
+<p class="username"><%= link_to (f.friend.first_name + " " + f.friend.last_name), user_path(f.friend) %></p>
+</div>
+<% end %>
+</div>
+<!-- show friends END -->
   </body>
 </html>

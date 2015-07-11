@@ -8,7 +8,7 @@
 	<% begin %>
 		<% begin %>
 			<% @friendships.each do |friendship| %>
-				<% if friendship.friend == @user.friends.find(session["user_id"]) %>
+				<% if friendship.friend == @user.friends.find(session["user_id"]) and friendship.user == @user %>
 					<% if friendship.confirmed == 0 %>
 						<%= link_to "Accept friendship", friendship, :method => "put" %>
 					<% elsif friendship.confirmed == 1 %>
@@ -21,7 +21,7 @@
 			<% end %>
 		<% rescue %>
 			<% @friendships.each do |friendship| %>
-				<% if friendship.friend == current_user.friends.find(@user.id) %>
+				<% if friendship.friend == current_user.friends.find(@user.id) and friendship.user == current_user %>
 					<% if friendship.confirmed == 0 %>
 						<%= link_to "Delete request", friendship, :method => :delete %>
 					<% elsif friendship.confirmed == 1 %>
