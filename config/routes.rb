@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'settings' => 'users#edit'
   get 'search' => 'users#index'
+  get 'friends' => 'friendships#index'
   resources :users
 
 resources :posts do

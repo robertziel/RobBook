@@ -7,6 +7,10 @@
   top: -15px;
 }
 
+a{
+text-decoration: none;
+}
+
 h1{
 text-align: center;
 font-family: inherit;
@@ -229,6 +233,10 @@ margin-top: 0px;
 }
 .friends div p.username{
 margin: 0px !important
+}
+
+.newFriendRequest a{
+color:red;
 }
 
 * {

@@ -28,11 +28,9 @@ def create
   @friendship.friend_id = params[:friend_id]
   @friendship.confirmed = 0
   if @friendship.save
-    flash[:notice] = "Added friend."
-    redirect_to '/users'
+    redirect_to (:back)
   else
-    flash[:error] = "Unable to add friend."
-    redirect_to '/users'
+    redirect_to (:back)
   end
 end
 
@@ -42,9 +40,9 @@ end
 	friendship = Friendship.find_by_id(params[:id])
 	friendship.confirmed = 1
 	    if friendship.save
-	      redirect_to '/users', :notice => "Successfully confirmed friend!"
+	      redirect_to (:back)
 	    else
-	      redirect_to '/users', :notice => "Sorry! Could not confirm friend!"
+	      redirect_to (:back)
 	    end
   end
 
@@ -53,8 +51,7 @@ end
 def destroy
   @friendship = current_user.friendships.find(params[:id])
   @friendship.destroy
-  flash[:notice] = "Removed friendship."
-  redirect_to '/users'
+  redirect_to (:back)
 end
 
   private

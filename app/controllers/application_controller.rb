@@ -20,7 +20,7 @@ end
 
 
 def set_last_seen_at
-  current_user.last_seen_at = Time.now if current_user
+  current_user.update_attribute(:last_seen_at, Time.now) if current_user
 end
 
 def list_of_friends

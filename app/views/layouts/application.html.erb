@@ -26,7 +26,12 @@
           
           <% if current_user %> 
   <ul> 
-    <li><%= link_to "Home", '/' %></li>   
+    <li><%= link_to "Home", '/' %></li>
+	<% if current_user.inverse_friendships.where(confirmed: 0).exists? %>
+    		<li class="newFriendRequest"><%= link_to "New Friends!", '/friends' %></li> 
+	<% else %>
+    		<li><%= link_to "Friends", '/friends' %></li> 
+	<% end %> 
     <li><%= link_to "Search", '/users' %></li>    
     <li><%= link_to "Settings", '/settings' %></li> 
     <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
