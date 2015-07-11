@@ -4,6 +4,36 @@
 
 
 
+<% if session["user_id"] != @user.id %>
+	<% begin %>
+		<% begin %>
+			<% @friendships.each do |friendship| %>
+				<% if friendship.friend == @user.friends.find(session["user_id"]) %>
+					<% if friendship.confirmed == 0 %>
+						<%= link_to "Accept friendship", friendship, :method => "put" %>
+					<% elsif friendship.confirmed == 1 %>
+						<p><%= "Friends" %></p>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% rescue %>
+			<% @friendships.each do |friendship| %>
+				<% if friendship.friend == current_user.friends.find(@user.id) %>
+					<% if friendship.confirmed == 0 %>
+						<%= link_to "Delete request", friendship, :method => :delete %>
+					<% elsif friendship.confirmed == 1 %>
+						<p><%= "Friends" %></p>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% rescue %>
+		<%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+	<% end %>
+<% end %>
+
+
+
 
 
 <div class="posts">
@@ -11,7 +41,7 @@
 <div class="post"> 
 	  <p class="author"><% unless post.user.blank? %><%= link_to (post.user.first_name + " " + post.user.last_name), post.user %><% end %></p> 
 	  <p class="content"><%= post.content %></p> 
-	  <p class="time"><%= post.created_at %></p> 
+	  <p class="time"><%= distance_of_time_in_words(post.created_at, Time.now) + " ago" %></p> 
 
 
 
@@ -20,7 +50,7 @@
 		<div class="comments">
 		  <p class="author"><% unless comment.user.blank? %><%= link_to (comment.user.first_name + " " + comment.user.last_name + " commented:"), comment.user %><% end %></p> 
 		  <p class="content"><%= comment.content %></p> 
-		  <p class="time"><%= comment.created_at %></p> 
+		  <p class="time"><%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %></p> 
 		</div>
 	<% end %>
 

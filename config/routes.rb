@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships
   root 'posts#index'
   get 'posts' => 'posts#index'
   get 'posts/new' => 'posts#new'

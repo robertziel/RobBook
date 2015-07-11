@@ -8,13 +8,14 @@ class UsersController < ApplicationController
 	@user = @users.find(params[:id])
 	@comment = Comment.all
 	@comment_new = Comment.new 
+	@friendships = Friendship.all
   end
 
   def create 
     @user = User.new(user_params) 
     if @user.save 
       session[:user_id] = @user.id 
-      redirect_to '/' 
+      redirect_to '/'
     else 
       redirect_to '/signup' 
     end 
@@ -22,11 +23,12 @@ class UsersController < ApplicationController
 
 
 def index
-  if params[:first_name]
-    @users = User.search(params[:first_name], 1).search(params[:last_name], 2).order("created_at DESC")
-  else
-    @users = User.all.order('created_at DESC')
-  end
+	@friendships = Friendship.all
+	if params[:first_name]
+	    @users = User.search(params[:first_name], 1).search(params[:last_name], 2).order("created_at DESC")
+	else
+	    @users = User.all.order('created_at DESC')
+	end
 end
 
 
