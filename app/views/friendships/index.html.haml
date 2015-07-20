@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Friendships
+.form
+  %h2 All friend requests recieved
+  - current_user.inverse_friendships.each do |f|
+    - if f.confirmed == 0
+      .post
+        %p.username= link_to (f.user.first_name + " " + f.user.last_name), user_path(f.friend)
+        = link_to "Accept friendship", f, :method => "put"
+  %br/
+  %h2 All friend requests sent
+  - current_user.friendships.each do |f|
+    - if f.confirmed == 0
+      .post
+        %p.username= link_to (f.friend.first_name + " " + f.friend.last_name), user_path(f.friend)
+        = link_to "Delete request", f, :method => :delete
+  %br/
+  = link_to 'Add friends', '/search'
+  %h2 Your friends
+  - list_of_friends.reverse_each do |f|
+    .post
+      %p.username= link_to (f.friend.first_name + " " + f.friend.last_name), user_path(f.friend)

@@ -1,0 +1,33 @@
+.form
+  %h1 Search for people
+  = form_tag(users_path, :method => "get", id: "search-form") do
+    = text_field_tag :first_name, params[:first_name], placeholder: "First name"
+    = text_field_tag :last_name, params[:last_name], placeholder: "Last name"
+    = submit_tag "Search", :name => nil, class: "btn-submit"
+  - if params[:first_name] == "" and params[:last_name] == ""
+  - elsif not params[:first_name] and not params[:last_name]
+  - else
+    - @users.each do |user|
+      .post
+        %p.username= link_to (user.first_name + " " + user.last_name), user_path(user)
+        - if session["user_id"] != user.id
+          - begin
+            - begin
+              - @friendships.each do |friendship|
+                - if friendship.friend == user.friends.find(session["user_id"]) and friendship.user == user
+                  - if friendship.confirmed == 0
+                    = link_to "Accept friendship", friendship, :method => "put"
+                  - elsif friendship.confirmed == 1
+                    %p= "Friends"
+              - if @friendships.blank?
+                = link_to "Add Friend", friendships_path(:friend_id => user), :method => :post
+            - rescue
+              - @friendships.each do |friendship|
+                - if friendship.friend == current_user.friends.find(user.id) and friendship.user == current_user
+                  - if friendship.confirmed == 0
+                    = link_to "Delete request", friendship, :method => :delete
+                  - elsif friendship.confirmed == 1
+                    %p= "Friends"
+          - rescue
+            = link_to "Add Friend", friendships_path(:friend_id => user), :method => :post
+%div

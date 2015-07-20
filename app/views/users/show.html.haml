@@ -1,0 +1,47 @@
+%h1
+  = @user.first_name unless @user.blank?
+  = @user.last_name unless @user.blank?
+.panel
+  - if session["user_id"] != @user.id
+    - begin
+      - begin
+        - @friendships.each do |friendship|
+          - if friendship.friend == @user.friends.find(session["user_id"]) and friendship.user == @user
+            - if friendship.confirmed == 0
+              = link_to "Accept friendship", friendship, :method => "put"
+            - elsif friendship.confirmed == 1
+              %p= "Friends"
+        - if @friendships.blank?
+          = link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post
+      - rescue
+        - @friendships.each do |friendship|
+          - if friendship.friend == current_user.friends.find(@user.id) and friendship.user == current_user
+            - if friendship.confirmed == 0
+              = link_to "Delete request", friendship, :method => :delete
+            - elsif friendship.confirmed == 1
+              %p= "Friends"
+    - rescue
+      = link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post
+  - else
+    %p Your profile
+.posts
+  - @user.posts.reverse_each do |post|
+    .post
+      %p.author
+        - unless post.user.blank?
+          = link_to (post.user.first_name + " " + post.user.last_name), post.user
+      %p.content= post.content
+      %p.time= distance_of_time_in_words(post.created_at, Time.now) + " ago"
+      - post.comments.each do |comment|
+        .comments
+          %p.author
+            - unless comment.user.blank?
+              = link_to (comment.user.first_name + " " + comment.user.last_name + " commented:"), comment.user
+          %p.content= comment.content
+          %p.time= distance_of_time_in_words(comment.created_at, Time.now) + " ago"
+      = form_for [post, @comment_new] do |c|
+        %p
+          = c.label :comment, "New comment"
+          %br/
+          = c.text_area :content
+        .actions= c.submit "Add comment"
