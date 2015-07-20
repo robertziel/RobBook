@@ -8,48 +8,47 @@
   <%= submit_tag "Search", :name => nil, class: "btn-submit" %>
 <% end %>
 
-<% @users.each do |user| %> 
-<div class="post"> 
-  <p class="username"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></p> 
 
-
-
-
-
-<% if session["user_id"] != user.id %>
-	<% begin %>
+<% if params[:first_name] == "" and params[:last_name] == "" %>
+<% elsif not params[:first_name] and not params[:last_name] %>
+<% else %>
+	<% @users.each do |user| %> 
+	<div class="post"> 
+	  <p class="username"><%= link_to (user.first_name + " " + user.last_name), user_path(user) %></p> 
+	<% if session["user_id"] != user.id %>
 		<% begin %>
-			<% @friendships.each do |friendship| %>
-				<% if friendship.friend == user.friends.find(session["user_id"]) %>
-					<% if friendship.confirmed == 0 %>
-						<%= link_to "Accept friendship", friendship, :method => "put" %>
-					<% elsif friendship.confirmed == 1 %>
-						<p><%= "Friends" %></p>
+			<% begin %>
+				<% @friendships.each do |friendship| %>
+					<% if friendship.friend == user.friends.find(session["user_id"]) and friendship.user == user %>
+						<% if friendship.confirmed == 0 %>
+							<%= link_to "Accept friendship", friendship, :method => "put" %>
+						<% elsif friendship.confirmed == 1 %>
+							<p><%= "Friends" %></p>
+						<% end %>
+					<% end %>
+
+				<% end %>
+				<% if @friendships.blank? %>
+					<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+				<% end %>
+			<% rescue %>
+				<% @friendships.each do |friendship| %>
+					<% if friendship.friend == current_user.friends.find(user.id) and friendship.user == current_user %>
+						<% if friendship.confirmed == 0 %>
+							<%= link_to "Delete request", friendship, :method => :delete %>
+						<% elsif friendship.confirmed == 1 %>
+							<p><%= "Friends" %></p>
+						<% end %>
 					<% end %>
 				<% end %>
-
-			<% end %>
-			<% if @friendships.blank? %>
-				<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
 			<% end %>
 		<% rescue %>
-			<% @friendships.each do |friendship| %>
-				<% if friendship.friend == current_user.friends.find(user.id) %>
-					<% if friendship.confirmed == 0 %>
-						<%= link_to "Delete request", friendship, :method => :delete %>
-					<% elsif friendship.confirmed == 1 %>
-						<p><%= "Friends" %></p>
-					<% end %>
-				<% end %>
-			<% end %>
+			<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
 		<% end %>
-	<% rescue %>
-		<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
 	<% end %>
 <% end %>
 
-
-
+</div> 
 
 </div> 
 <% end %>

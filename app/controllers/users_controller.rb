@@ -24,7 +24,9 @@ class UsersController < ApplicationController
 
 def index
 	@friendships = Friendship.all
-	if params[:first_name]
+	if params[:first_name] == "" and params[:last_name] == ""
+	    @users = ""
+	elsif params[:first_name]
 	    @users = User.search(params[:first_name], 1).search(params[:last_name], 2).order("created_at DESC")
 	else
 	    @users = User.all.order('created_at DESC')

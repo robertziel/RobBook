@@ -9,6 +9,7 @@
 
 a{
 text-decoration: none;
+color: #0084D7;
 }
 
 h1{
@@ -236,7 +237,7 @@ margin: 0px !important
 }
 
 .newFriendRequest a{
-color:red;
+color:red !important;
 }
 
 * {

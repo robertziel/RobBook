@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 	@user = @users.find(params[:id])
 	@comment = Comment.all
 	@comment_new = Comment.new 
+	@friendships = Friendship.all
   end
 
   def create 
@@ -23,7 +24,9 @@ class UsersController < ApplicationController
 
 def index
 	@friendships = Friendship.all
-	if params[:first_name]
+	if params[:first_name] == "" and params[:last_name] == ""
+
+	elsif params[:first_name]
 	    @users = User.search(params[:first_name], 1).search(params[:last_name], 2).order("created_at DESC")
 	else
 	    @users = User.all.order('created_at DESC')
