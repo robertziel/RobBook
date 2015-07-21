@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 	for x in @list_of_friendships
 		@post = @post + Post.where(:user_id => x.friend)
 	end
+	@post.sort!{|a,b| a.id.abs <=> b.id.abs }
 	@post_new = Post.new 
 	@comment_new = Comment.new 
   end

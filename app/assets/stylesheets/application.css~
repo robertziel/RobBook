@@ -237,7 +237,7 @@ margin: 0px !important
 }
 
 .newFriendRequest a{
-color:red !important!;
+color:red !important;
 }
 
 * {
