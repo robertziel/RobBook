@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   def index
-	@post = Post.all
+	@list_of_friendships = current_user.friendships.all + current_user.inverse_friendships.all if current_user
+	@list_of_friendships.delete_if{|x| x.confirmed == 0} if current_user
+	@list_of_friendships.each{|x| x.friend = x.user if x.friend == current_user} if current_user
+	@post = Post.where(:user_id => current_user.id)
+	for x in @list_of_friendships
+		@post = @post + Post.where(:user_id => x.friend)
+	end
 	@post_new = Post.new 
-	@comment = Comment.all
 	@comment_new = Comment.new 
   end
 
