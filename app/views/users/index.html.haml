@@ -4,8 +4,8 @@
     = text_field_tag :first_name, params[:first_name], placeholder: "First name"
     = text_field_tag :last_name, params[:last_name], placeholder: "Last name"
     = submit_tag "Search", :name => nil, class: "btn-submit"
-  - if params[:first_name] == "" and params[:last_name] == ""
-  - elsif not params[:first_name] and not params[:last_name]
+  - if params[:first_name] == "" and params[:last_name] == "" and current_user.admin == false
+  - elsif not params[:first_name] and not params[:last_name] and current_user.admin == false
   - else
     - @users.each do |user|
       .post

@@ -4,21 +4,21 @@ class UsersController < ApplicationController
   end
 
   def show
-	@users = User.all
-	@user = @users.find(params[:id])
-	@comment = Comment.all
-	@comment_new = Comment.new 
-	@friendships = Friendship.all
+  	@users = User.all
+  	@user = @users.find(params[:id])
+  	@comment = Comment.all
+  	@comment_new = Comment.new
+  	@friendships = Friendship.all
   end
 
-  def create 
-    @user = User.new(user_params) 
-    if @user.save 
-      session[:user_id] = @user.id 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
       redirect_to '/'
-    else 
-      redirect_to '/signup' 
-    end 
+    else
+      redirect_to '/signup'
+    end
   end
 
 
@@ -38,7 +38,7 @@ end
   def edit
     @user = User.find(session[:user_id])
   end
-  
+
   def update
     @user = User.find(session[:user_id])
     if @user.update_attributes(user_params)
