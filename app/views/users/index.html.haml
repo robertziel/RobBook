@@ -10,6 +10,9 @@
     - @users.each do |user|
       .post
         %p.username= link_to (user.first_name + " " + user.last_name), user_path(user)
+        %p.time= user.last_seen_at
+        %p.joined= user.created_at
+        %p.email= user.email
         - if session["user_id"] != user.id
           - begin
             - begin
