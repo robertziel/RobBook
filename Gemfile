@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'autoprefixer-rails'
 
 
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'haml-rails'
 gem "erb2haml", :group => :development
