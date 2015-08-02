@@ -7,23 +7,10 @@
       = f.text_area :content
     .actions
       = f.submit "Post" , class: "btn-submit"
-  - @post.reverse_each do |post|
-    .post
-      %p.author
-        - unless post.user.blank?
-          = link_to (post.user.first_name + " " + post.user.last_name), post.user
-      %p.content= post.content
-      %p.time= distance_of_time_in_words(post.created_at, Time.now) + " ago"
-      - post.comments.each do |comment|
-        .comments
-          %p.author
-            - unless comment.user.blank?
-              = link_to (comment.user.first_name + " " + comment.user.last_name + ":"), comment.user
-          %p.content= comment.content
-          %p.time= distance_of_time_in_words(comment.created_at, Time.now) + " ago"
-      = form_for [post, @comment_new] do |c|
-        %p
-          = c.label :comment, "New comment"
-          %br/
-          = c.text_area :content
-        .actions= c.submit "Add comment"
+
+  =render @post
+
+- if not @post.blank?
+  .load-more-container
+    %h3.loading-gif{ "style" => "display:none;"}= "Loading"
+    = link_to "Load More", posts_path, class: "load-more btn-submit"
