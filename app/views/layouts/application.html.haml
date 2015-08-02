@@ -2,14 +2,13 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %link{:href => "http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css", :rel => "stylesheet"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400,500,300", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .header
-      .container
+    %nav.navbar.header.navbar-default{:role => "navigation"}
+      .container-fluid
         = link_to root_path do
           #logo
           %h1#title RobBook
@@ -18,9 +17,15 @@
               Hello #{current_user.first_name}!
           - else
             %p Welcome to RobBook!
-        .nav.pull-right
-          - if current_user
-            %ul
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse.pull-right
+          %ul.nav.navbar-nav
+            - if current_user
               %li= link_to "Home", '/'
               - if current_user.inverse_friendships.where(confirmed: 0).exists?
                 %li.newFriendRequest= link_to "New Friends!", '/friends'
@@ -29,8 +34,7 @@
               %li= link_to "Search", '/users'
               %li= link_to "Settings", '/settings'
               %li= link_to "Log out", logout_path, method: "delete"
-          - else
-            %ul
+            - else
               %li= link_to "Login", 'login'
               %li= link_to "Signup", 'signup'
     = yield
