@@ -48,12 +48,12 @@ h1{
   float: left;
   width:80px;
   height:80px;
-  background-color: #DA0A0A;
+  background: transparent linear-gradient(to bottom, rgb(255, 110, 110) 0%, rgb(218, 10, 10) 80%) repeat scroll 0% 0%;
   border-bottom-right-radius:80px;
 }
 
 .posts{
-  width: 480px;
+  max-width: 480px;
   margin: 0px auto;
 }
 
@@ -65,6 +65,7 @@ form textarea:focus {
 
 .pull-right {
   background-color: #FFF !important;
+  box-shadow: 0px 0px 15px rgba(132, 132, 132, 0.22);
   border-bottom-left-radius: 80px;
   margin-top: 0px !important;
   margin-right: 0px !important;
