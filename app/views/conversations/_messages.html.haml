@@ -1,0 +1,17 @@
+.chatboxhead
+  .chatboxtitle
+    %i.fa.fa-comments
+    %h1
+      = @reciever.first_name
+  .chatboxoptions
+    = link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id
+    \&nbsp;&nbsp;
+    \#{link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id}
+  %br{:clear => "all"}/
+.chatboxcontent
+  - if @messages.any?
+    = render @messages
+.chatboxinput
+  = form_for [@conversation, @message] do |c|
+    = c.text_area :body
+    .actions= c.submit "Send message"

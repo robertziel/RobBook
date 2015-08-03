@@ -1,0 +1,7 @@
+.post
+  %p.author
+    - unless message.user.blank?
+      = link_to (message.user.first_name + " " + message.user.last_name), message.user
+  %p= message.body
+  %time{:datetime => message.created_at, :title => message.created_at.strftime("%d %b  %Y at %I:%M%p")}
+    • #{message.created_at.strftime("%H:%M %p")}

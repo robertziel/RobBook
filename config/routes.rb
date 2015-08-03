@@ -1,22 +1,29 @@
 Rails.application.routes.draw do
-  resources :friendships
   root 'posts#index'
   get 'posts' => 'posts#index'
   get 'posts/new' => 'posts#new'
   get 'posts/:id' => 'posts#show', as: :post
   post 'posts' => 'posts#create'
-  get 'signup'  => 'users#new' 
+  get 'signup'  => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'settings' => 'users#edit'
   get 'search' => 'users#index'
   get 'friends' => 'friendships#index'
-  resources :users
+  get 'messages' => 'conversations#index'
+  post 'messages' => 'conversations#create'
+  get 'messages/:id' => 'conversations#show', as: :conversation
 
-resources :posts do
-  resources :comments
-end
+
+  resources :friendships
+  resources :users
+  resources :posts do
+    resources :comments
+  end
+  resources :conversations do
+    resources :messages
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
