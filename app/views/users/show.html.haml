@@ -25,7 +25,7 @@
   - else
     %p Your profile
 .posts
-  - @user.posts do |post|
+  - @user.posts.each do |post|
     .post
       %p.author
         - unless post.user.blank?
