@@ -25,7 +25,7 @@
   - else
     %p Your profile
 .posts
-  - @user.posts.reverse_each do |post|
+  - @user.posts do |post|
     .post
       %p.author
         - unless post.user.blank?

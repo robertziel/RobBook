@@ -1,11 +1,11 @@
 - list_of_friends.each do |user|
   %tr
-    %div
+    %div.post
       %p.username= link_to (user.friend.first_name + " " + user.friend.last_name), user_path(user.friend)
       %p.time= distance_of_time_in_words(user.friend.last_seen_at, Time.now) + " ago" if user.friend.last_seen_at
-    %td
-      = form_for(@conversation_new) do |f|
-        %input{:name => "sender_id", :type => "hidden", :value => current_user.id}
-        %input{:name => "recipient_id", :type => "hidden", :value => user.friend.id}
-        .actions
-          = f.submit "Start conversation" , class: "btn btn-success btn-xs start-conversation"
+      %td
+        = form_for(@conversation_new) do |f|
+          %input{:name => "sender_id", :type => "hidden", :value => current_user.id}
+          %input{:name => "recipient_id", :type => "hidden", :value => user.friend.id}
+          .actions
+            = f.submit "Start conversation" , class: "btn btn-success btn-xs start-conversation"
