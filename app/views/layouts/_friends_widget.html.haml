@@ -1,0 +1,7 @@
+- if current_user
+  .friends
+    %p Friends
+    - list_of_friends.reverse_each do |f|
+      %div
+        %p.username= link_to (f.friend.first_name + " " + f.friend.last_name), user_path(f.friend)
+        %p.time= distance_of_time_in_words(f.friend.last_seen_at, Time.now) + " ago" if f.friend.last_seen_at

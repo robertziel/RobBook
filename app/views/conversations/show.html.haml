@@ -1,4 +1,6 @@
 .row
-  .col-xs-12.col-sm-6.col-md-6.col-lg-6
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3
+    =render 'conversations/last'
+  .col-xs-12.col-sm-6.col-md-6.col-lg-6=render 'conversations/messages'
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3
     =render 'conversations/friends'
-  .col-xs-12.col-sm-6.col-md-4.col-lg-4=render 'conversations/messages'

@@ -1,0 +1,12 @@
+- if current_user.conversations.any?
+  %h3 Conversations
+  %ul.media-list
+    - current_user.conversations.each do |conversation|
+      -if not conversation.messages.last.nil?
+        .last_conversations
+          %p.username= link_to (conversation_interlocutor(conversation).first_name + " " + conversation_interlocutor(conversation).last_name), "/messages/#{conversation_interlocutor(conversation).id.to_s}"
+          %p.time= distance_of_time_in_words(conversation_interlocutor(conversation).last_seen_at, Time.now) + " ago" if conversation_interlocutor(conversation).last_seen_at
+          %p= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45)
+          .button= link_to "Load conversation", "/messages/#{conversation.id}"
+- else
+  %h3 You have no conversations.
