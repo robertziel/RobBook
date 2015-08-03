@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+	has_many :conversations, :foreign_key => :sender_id
+
 	def self.search(query, n)
 	  if n == 1
 	  	where("first_name like ?", "%#{query}%")
