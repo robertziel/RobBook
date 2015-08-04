@@ -21,6 +21,8 @@ $(document).ready ->
 
 
   $('.chatboxcontent').animate { scrollTop: $('.chatboxcontent').position.top+$('.chatboxcontent').height() }, 'fast'
-  chat_loop()
+  if "messages/" == window.location.pathname.substring 1, 10
+    chat_loop()
+
 
   return
