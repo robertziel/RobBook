@@ -1,7 +1,7 @@
-- if current_user.conversations.any?
+- if @conversations.any?
   %h3 Conversations
   %ul.media-list
-    - current_user.conversations.each do |conversation|
+    - @conversations.each do |conversation|
       -if not conversation.messages.last.nil?
         .last_conversations
           %p.username= link_to (conversation_interlocutor(conversation).first_name + " " + conversation_interlocutor(conversation).last_name), "/messages/#{conversation_interlocutor(conversation).id.to_s}"

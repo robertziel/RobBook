@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversation_new = Conversation.new
+    @conversations = Conversation.involving(current_user).order("created_at DESC")
   end
 
   def create
@@ -15,11 +16,22 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
-    @conversation_new = Conversation.new
-    @reciever = interlocutor(@conversation)
-    @messages = @conversation.messages
-    @message = Message.new
+    if params[:last_id]#LOAD MORE GENERATING
+      @conversation = Conversation.find(params[:id])
+      @messages = @conversation.messages.where("id > ?", params[:last_id])
+    else
+      @conversations = Conversation.involving(current_user).order("created_at DESC")
+      @conversation = Conversation.find(params[:id])
+      @conversation_new = Conversation.new
+      @reciever = interlocutor(@conversation)
+      @messages = @conversation.messages
+      @message = Message.new
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 

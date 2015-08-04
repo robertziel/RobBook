@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require loadmore
+//= require realtimechat
 //= require_tree .

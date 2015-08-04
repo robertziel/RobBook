@@ -1,4 +1,4 @@
-.message{ :class => ("his_message" if message.user.id != current_user.id)}
+.message{ :class => ("his_message" if message.user.id != current_user.id), "data-id" => message.id }
 
   %p.author
     - unless message.user.blank?
