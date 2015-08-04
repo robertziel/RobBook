@@ -11,7 +11,10 @@
 .chatboxcontent
   - if @messages.any?
     = render @messages
+
 .chatboxinput
-  = form_for [@conversation, @message] do |c|
-    = c.text_area :body
-    .actions= c.submit "Send message"
+  %form#new_message.new_message{"accept-charset" => "UTF-8", :onsubmit => "return chat_send()", :method => "post"}
+    %input{:name => "utf8", :type => "hidden", :value => "✓"}
+      %textarea#message_body{:name => "message[body]"}
+      .button
+        %a.send Send message

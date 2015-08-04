@@ -16,6 +16,13 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    if params[:message_content] != "" #LOAD MORE GENERATING
+      @message = Message.new
+      @message.user = current_user
+      @message.conversation_id = params[:id]
+      @message.body = params[:message_content]
+      @message.save
+    end
     if params[:last_id]#LOAD MORE GENERATING
       @conversation = Conversation.find(params[:id])
       @messages = @conversation.messages.where("id > ?", params[:last_id])
