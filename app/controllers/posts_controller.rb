@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     	@post.sort!{|a,b| b.id.to_f <=> a.id.to_f } if not @post.blank? and not @list_of_friendships.blank?
       #LOAD MORE GENERATING
       if params[:id]
-        @post = @post.delete_if{|x| x.id >= params[:id].to_i}.first(5)
+        @post = @post.reject{|x| x.id >= params[:id].to_i}.first(5)
       else
         @post = @post.first(5)
       end
